@@ -20,6 +20,7 @@ export class RegistrationFormComponent {
     const _password = (<HTMLInputElement>document.getElementById('txtPassword')).value;
     const _name = (<HTMLInputElement>document.getElementById('txtName')).value;
     const _surname = (<HTMLInputElement>document.getElementById('txtSurname')).value;
+    let _message = (<HTMLInputElement>document.getElementById('message')).value;
     console.log("Registrazione");
     fetch(`${this.url}register`, {
       method: 'POST',
@@ -34,10 +35,11 @@ export class RegistrationFormComponent {
       }
     })
       .then(async (response: Response) => {
+        _message = await response.text();
         console.log(await response.text());
       })
-      .catch((error: any) => {
-        console.error(error);
+      .catch(async (error: Response) => {
+        _message = await error.statusText;
       });
   }
 } 
