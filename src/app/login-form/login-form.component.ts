@@ -25,6 +25,7 @@ export class LoginFormComponent {
   login() {
     const _email = (<HTMLInputElement>document.getElementById('txtEmail')).value;
     const _password = (<HTMLInputElement>document.getElementById('txtPassword')).value;
+    let _message: any = (<HTMLInputElement>document.getElementById('message')).value;
     console.log("Login");
     fetch(`${this.url}login`, {
       method: 'POST',
@@ -36,13 +37,13 @@ export class LoginFormComponent {
         'Content-Type': 'application/json'
       }
     })
-      .then((response: any) => {
-        if (response.status === 200) {
-          console.log("Login effettuato con successo");
+      .then(async (response: any) => {
+        if (response.status == 200) {
+          _message = await response.json();
           this.router.navigate(['/home']);
-          console.log(response)
+          console.log(_message.message);
         } else {
-          console.log("Errore durante il login");
+          console.log(_message.error);
         }
       })
       .catch((error: any) => {

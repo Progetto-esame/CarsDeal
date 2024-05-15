@@ -21,26 +21,6 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    let _carsDiv = document.getElementById('cars');
-    fetch(`${this.url}getAll`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(async(response: Response) => {
-            console.log(await response.json());
-            response.json().then((data) => {
-              for(let i = 0; i < data.length; i++){
-                
-                let _car = document.createElement('div');
-                console.log(data[i].marca
-                );
-              }
-          })
-          .catch((error: any) => {
-            console.log(error);
-        })
-    });
+    console.log("Home");
   }
 }
