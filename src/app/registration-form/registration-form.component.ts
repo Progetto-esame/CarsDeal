@@ -20,7 +20,8 @@ export class RegistrationFormComponent {
     const _password = (<HTMLInputElement>document.getElementById('txtPassword')).value;
     const _name = (<HTMLInputElement>document.getElementById('txtName')).value;
     const _surname = (<HTMLInputElement>document.getElementById('txtSurname')).value;
-    let _message: any = (<HTMLInputElement>document.getElementById('message')).value;
+    let _message: any = (<HTMLInputElement>document.getElementById('message'));
+    let result : any;
     console.log("Registrazione");
     fetch(`${this.url}register`, {
       method: 'POST',
@@ -35,17 +36,15 @@ export class RegistrationFormComponent {
       }
     })
       .then(async (response: Response) => {
-        _message = await response.json();
-
+        result = await response.json();
         if(response.status == 200){
-          console.log(_message.message);
+          _message.innerText = result.message;
         } else {
-          console.log(_message.error);
+          _message.innerText = result.error;
         }
       })
       .catch(async (error: Response) => { // Errore di rete
         alert("Errore di rete");
-        _message = await error.statusText;
       });
   }
 } 
