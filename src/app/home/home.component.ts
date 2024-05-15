@@ -23,11 +23,9 @@ export class HomeComponent {
   async ngOnInit() {
 
     const body = await(await fetch(`${this.url}getAll`)).json();
-    const dom = document.getElementsByTagName('body')[0];
+    const _div: any = document.getElementById('cars');
     body.forEach((element: any) => {
       console.log(element.marca + " " + element.modello + " " + element.targa + " " + element.chilometri + " " + element.anno);
-      let _div = document.createElement('div');
-      _div.className = "cars";
       let cars = document.createElement('div');
       cars.innerHTML = `
       <div class="card">
@@ -42,7 +40,6 @@ export class HomeComponent {
       </div>
     </div>
       `;
-      dom.appendChild(_div);
       _div.appendChild(cars);
     });
   }
