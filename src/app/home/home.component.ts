@@ -27,18 +27,21 @@ export class HomeComponent {
     body.forEach((element: any) => {
       console.log(element.marca + " " + element.modello + " " + element.targa + " " + element.chilometri + " " + element.anno);
       let cars = document.createElement('div');
+      cars.className = 'wrapperCard';
+      cars.style.margin = '10px';
+      cars.style.width = '18rem';
       cars.innerHTML = `
-      <div class="card">
-      <img src="" class="card-img-top" alt="Placeholder Image">
-      <div class="card-body">
-        <h5 class="card-title"></h5>
-        <p class="card-text" id="txtMarca">Marca: ${element.marca}</p>
-        <p class="card-text" id="txtModello">Modello: ${element.modello}</p>
-        <p class="card-text" id="txtChilometri">Chilometri: </p>
-        <p class="card-text" id="txtAnno">Anno: ${element.targa}</p>
-        <a href="#" class="btn btn-primary">Specifiche</a>
+      <div class="card bg-light">
+        <img src="" class="card-img-top" alt="Placeholder Image">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text" id="txtMarca">Marca: ${element.marca}</p>
+          <p class="card-text" id="txtModello">Modello: ${element.modello}</p>
+          <p class="card-text" id="txtChilometri">${element.chilometri} Km</p>
+          <p class="card-text" id="txtAnno">Anno: ${element.anno}</p>
+          <a href="#" class="btn btn-primary">Specifiche</a>
+        </div>
       </div>
-    </div>
       `;
       _div.appendChild(cars);
     });

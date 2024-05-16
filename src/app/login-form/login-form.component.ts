@@ -25,7 +25,8 @@ export class LoginFormComponent {
   login() {
     const _email = (<HTMLInputElement>document.getElementById('txtEmail')).value;
     const _password = (<HTMLInputElement>document.getElementById('txtPassword')).value;
-    let _message: any = (<HTMLInputElement>document.getElementById('message')).value;
+    let _message: any = (<HTMLInputElement>document.getElementById('message'));
+    let result : any;
     console.log("Login");
     fetch(`${this.url}login`, {
       method: 'POST',
@@ -38,12 +39,11 @@ export class LoginFormComponent {
       }
     })
       .then(async (response: any) => {
-        if (response.status == 200) {
-          _message = await response.json();
-          this.router.navigate(['/home']);
-          console.log(_message.message);
+        result = await response.json();
+        if(response.status == 200){
+          _message.innerText = result.message;
         } else {
-          console.log(_message.error);
+          _message.innerText = result.error;
         }
       })
       .catch((error: any) => {

@@ -13,13 +13,10 @@
                 </div>
             </div>
             <div class="m-3 d-flex justify-content-center">
-                <div class="form-group col-md-4 m-2">
-                    <label for="annoDa" class="text-light">Anno immatricolazione (da)</label>
-                    <input type="number" class="form-control" id="annoDa" placeholder="Da" min="1900" max="2024">
-                </div>
-                <div class="form-group col-md-4 m-2">
-                    <label for="annoA" class="text-light">Anno immatricolazione (a)</label>
-                    <input type="number" class="form-control" id="annoA" placeholder="A" min="1900" max="2024">
+                <div class="form-group col-md-4 mt-2 m-1 row">
+                    <label for="chilometraggio" class="text-light">Anno immatricolazione</label>
+                    <input type="number" min="1970" class="form-control col m-1" id="txtAnnoDa" placeholder="Da">
+                    <input type="number" min="1971" class="form-control col m-1" id="txtAnnoA" placeholder="A">
                 </div>
             </div>
         </div>
@@ -54,19 +51,18 @@
         </div>
         <div class="form-row ">
             <div class="m-3 d-flex justify-content-center">
-
-                <div class="form-group col-md-4 m-2">
-                    <label for="potenza" class="text-light">Potenza (CV)</label>
-                    <input type="number" class="form-control" id="potenza" placeholder="Inserisci la potenza">
+                <div class="form-group col-md-4 mt-2 m-1 row">
+                    <label for="chilometraggio" class="text-light">Potenza (CV)</label>
+                    <input type="number" min="20" class="form-control col m-1" id="txtPotenzaDa" placeholder="Da">
+                    <input type="number" min="21" class="form-control col m-1" id="txtPotenzaA" placeholder="A">
                 </div>
-                
-                <div class="form-group col-md-4 m-2">
-                    <label for="chilometraggio" class="text-light">Chilometraggio</label>
-                    <input type="number" class="form-control" id="chilometraggio" placeholder="Inserisci il chilometraggio">
+                <div class="form-group col-md-4 mt-2 m-1 row">
+                    <label for="chilometraggio" class="text-light">Chilometraggio (KM)</label>
+                    <input type="number" min="0" class="form-control col m-1" id="txtChilometriDa" placeholder="Da">
+                    <input type="number" min="1" class="form-control col m-1" id="txtChilometriA" placeholder="A">
                 </div>
             </div>
         </div>
-        <!-- Aggiunta prezzo da / a ---------- Altri campi della ricerca -->
         <button type="submit" class="btn btn-primary mt-1 m-2">Cerca</button>
     </form>
 </div>
