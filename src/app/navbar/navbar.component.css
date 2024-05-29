@@ -7,3 +7,7 @@ body{
     position: relative;
     margin-right: 0;
 }
+
+a:hover{
+    cursor: pointer;
+}

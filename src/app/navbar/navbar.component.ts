@@ -17,6 +17,9 @@ export class NavbarComponent {
   redirectLogin() {
   this.router.navigate(['/login']);
   console.log('redirectLogin');
+  let _accedi: any = (<HTMLInputElement>document.getElementById('linkAccesso'));
+  _accedi.innerText = "Accedi";
+  localStorage.removeItem('user');
   }
 
   redirectHome() {
