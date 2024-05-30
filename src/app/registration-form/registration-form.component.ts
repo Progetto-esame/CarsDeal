@@ -16,6 +16,7 @@ export class RegistrationFormComponent {
   }
 
   register(){
+    const _btn: any = (<HTMLInputElement>document.getElementById('btnRegister'));
     const _email = (<HTMLInputElement>document.getElementById('txtEmail')).value;
     const _password = (<HTMLInputElement>document.getElementById('txtPassword')).value;
     const _name = (<HTMLInputElement>document.getElementById('txtName')).value;
@@ -23,6 +24,11 @@ export class RegistrationFormComponent {
     let _message: any = (<HTMLInputElement>document.getElementById('message'));
     let result : any;
     console.log("Registrazione");
+
+    if(_email == "" || _password == "" || _name == "" || _surname == ""){
+      _message.innerText = "Compilare tutti i campi";
+      return;
+    }else{
     fetch(`${this.url}register`, {
       method: 'POST',
       body: JSON.stringify({
@@ -46,5 +52,6 @@ export class RegistrationFormComponent {
       .catch(async (error: Response) => { // Errore di rete
         alert("Errore di rete");
       });
+    }
   }
 } 

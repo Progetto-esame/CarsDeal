@@ -65,11 +65,13 @@ export class LoginFormComponent {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['/home']);
         } else {
+          _message.classList.add('badge', 'text-bg-warning', 'mt-2');
+          console.log(result.message);
           _message.innerText = result.error;
         }
       })
       .catch((error: any) => {
-        console.error(error);
+        _message.innerText = result.error;
       });
   };
 }
