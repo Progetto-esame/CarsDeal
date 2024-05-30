@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { ReferenzeComponent } from './referenze/referenze.component';
 import { ProfileComponent } from './profile/profile.component';
+import { SellCarsComponent } from './sell-cars/sell-cars.component';
 
 export const routes: Routes = [
     {path : '', redirectTo: '/home', pathMatch: 'full'},
@@ -14,4 +15,5 @@ export const routes: Routes = [
     {path : 'ricerca', component: RicercaComponent},
     {path : 'referenze', component: ReferenzeComponent},
     {path : 'profile', component: ProfileComponent},
+    {path : 'sell-cars', component: SellCarsComponent}
 ];

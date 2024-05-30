@@ -36,7 +36,6 @@ export class ProfileComponent {
           </div>
           `;
     }
-    
   } 
   openModal(){
     let modal: any = document.getElementById('passwordModal');
