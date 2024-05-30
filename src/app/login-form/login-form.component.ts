@@ -31,6 +31,8 @@ export class LoginFormComponent {
     let _message: any = (<HTMLInputElement>document.getElementById('message'));
     let _accedi: any = (<HTMLInputElement>document.getElementById('navbarLogin'));
     let _btnEsci: any = (<HTMLInputElement>document.getElementById('btnEsci'));
+    let _lblUsername: any = (<HTMLInputElement>document.getElementById('lblUsername'));
+    let _lblEmail: any = (<HTMLInputElement>document.getElementById('lblEmail'));
     let result : any;
     console.log("Login");
     fetch(`${this.url}login`, {
@@ -54,9 +56,11 @@ export class LoginFormComponent {
             </button>
             <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="/login" id="btnEsci">Esci</a></li>
+            <li><a class="dropdown-item" href="/profile" id="btnAutoPers">Le tue auto</a></li>
             </ul>
           </div>
           `;
+          
           console.log(result.user);
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['/home']);

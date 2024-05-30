@@ -4,6 +4,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { HomeComponent } from './home/home.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { ReferenzeComponent } from './referenze/referenze.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
     {path : '', redirectTo: '/home', pathMatch: 'full'},
@@ -11,5 +12,6 @@ export const routes: Routes = [
     {path : 'registration', component: RegistrationFormComponent},
     {path : 'home', component: HomeComponent},
     {path : 'ricerca', component: RicercaComponent},
-    {path : 'referenze', component: ReferenzeComponent}
+    {path : 'referenze', component: ReferenzeComponent},
+    {path : 'profile', component: ProfileComponent},
 ];

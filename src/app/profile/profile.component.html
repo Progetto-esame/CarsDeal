@@ -1,0 +1,31 @@
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card" style="width: 40rem;">
+      <div class="card-body">
+        <h5 class="card-title" id="lblUsername">{{user.name + ' ' + user.surname}}</h5>
+        <p class="card-text" id="lblEmail">Email: {{user.email}}</p>
+    <button class="btn btn-primary" id="btnModificaPwd" (click)="openModal()">Modifica password</button>
+    <div class="modal" id="passwordModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+        <h5 class="modal-title">Modifica Password</h5>
+          </div>
+          <div class="modal-body p-3">
+            <label for="currentPwd" class="label mt-2">Password corrente:</label>
+            <input type="password" class="form-control" placeholder="Password corrente" id="currentPwd">
+            <label for="currentPwd" class="label mt-2">Password nuova:</label>
+            <input type="password" class="form-control mt-1" placeholder="Nuova password" id="newPwd">
+            <label for="currentPwd" class="label mt-2">Conferma password:</label>
+            <input type="password" class="form-control mt-1" placeholder="Conferma password" id="confirmPwd">
+            <label for="message" class="badge text-bg-warning mt-2" id="warningMessage"></label>
+          </div>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Chiudi</button>
+        <button type="button" class="btn btn-primary" (click)="renewPwd()">Salva</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
