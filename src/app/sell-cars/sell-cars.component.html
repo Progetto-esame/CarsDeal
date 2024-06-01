@@ -63,10 +63,19 @@
                 </div>
             </div>
         </div>
+        <!-- File upload form
         <form method='post' action='http://localhost:3000/upload' enctype="multipart/form-data">
-          <input name="foo" type="file" />
-          <input type='submit'>
-        </form>
+            <input name="foo" type="file" />
+            <input type='submit'>
+        </form> -->
+
+        <div class="form-row">
+            <div class="m-3 d-flex justify-content-center">
+                <div class="form-group">
+                    <input multiple="true" style="color: white;" name="foo" type="file" (change)="uploadFile($event)" />
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary mt-1 m-2">Vendi</button>
     </form>
 </div>
