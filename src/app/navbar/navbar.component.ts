@@ -36,6 +36,11 @@ export class NavbarComponent {
     this.router.navigate(['/referenze']);
     console.log("Reindirizzamento a referenze effettuato con successo");
   }
+
+  redirectSellCars(){
+    this.router.navigate(['/sell-cars']);
+    console.log("Reindirizzamento a vendita auto effettuato con successo");
+  }
 }
 
 
