@@ -1,5 +1,5 @@
   <div class="bg-dark p-1 m-5 mt-4 rounded-5 text-center " id="form">
-    <form class="text-center">
+    <form class="text-center" (submit)="FormSubmit($event)">
         <h4 class="text-center text-light mt-2">Vendi la tua auto</h4>
         <div class="form-row"> <!-- Modified -->
             <div class="m-3 d-flex justify-content-center">
@@ -73,7 +73,7 @@
         <div class="form-row">
             <div class="m-3 d-flex justify-content-center">
                 <div class="form-group">
-                    <input multiple="true" style="color: white;" name="foo" type="file" (change)="uploadFile($event)" />
+                    <input multiple="true" style="color: white;" name="foo" type="file" (change)="uploadFile($event)"/>
                 </div>
             </div>
         </div>

@@ -10,14 +10,32 @@ import { Component } from '@angular/core';
 export class SellCarsComponent {
     now: number = new Date().getFullYear();
 
+    files: File[] = [];
+
     NgOninit(){
-        if(!localStorage.getItem('user')){
+        if(localStorage.getItem('user') == null){
             alert('Redirect to Login');
         }
+
+        this.files = [];
     }
 
     async uploadFile(e: Event) {
         const fileInput = e.target as HTMLInputElement;
+    
+        if (!fileInput.files || fileInput.files!.length === 0) {
+            return;
+        }
+
+        for(const file of Array.from(fileInput.files!)) {
+            this.files.push(file);
+        }
+    }
+
+    FormSubmit(e: Event) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
         const _marca = (<HTMLInputElement>document.getElementById('marca')).value;
         const _modello = (<HTMLInputElement>document.getElementById('modello')).value;
         const _anno = (<HTMLInputElement>document.getElementById('txtAnno')).value;
@@ -37,28 +55,34 @@ export class SellCarsComponent {
             chilometri: _chilometri,
             targa: _targa
         }
+        const user = localStorage.getItem('user')!;
 
-        if (fileInput.files!.length === 0)
-            return;
 
         const formData = new FormData();
 
         formData.append("auto", JSON.stringify(auto));
+        formData.append('user', user);
         
-        for (const file of Array.from(fileInput.files!)) {
-            formData.append(file.name, file);
+        if(this.files) {
+            for (const file of this.files) {
+                formData.append(file.name, file);
+            }
         }
+        
         fetch('http://localhost:3000/upload', {
-        method: 'POST',
-        body: formData,
-            
+            method: 'POST',
+            body: formData,
         })
-        .then(response => response.json())
-        .then(result => {
-            console.log('Success:', result);
+        .then((response: Response) =>{
+            if(!response.ok) {
+                throw new Error();
+            }
+
+            return response.json();
         })
-        .catch(error => {
-            console.error('Error:', error);
-        });
+        .then(json => {
+            console.log(json.message);
+        })
+        .catch(console.error);
     }
 }

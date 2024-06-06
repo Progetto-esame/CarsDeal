@@ -14,6 +14,13 @@ export class NavbarComponent {
     this.router = router; // Assign the injected router parameter to the class property.
   }
 
+  NgOnInit(){
+     if(localStorage.getItem('user') != null){
+      
+    }
+  }
+ 
+
   redirectLogin() {
   this.router.navigate(['/login']);
   console.log('redirectLogin');

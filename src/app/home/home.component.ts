@@ -15,22 +15,28 @@ export class HomeComponent {
     this.router = router; // Assign the injected router parameter to the class property.
   }
 
-  redirectRicerca(){
+  redirectRicerca() {
     this.router.navigate(['/ricerca']);
     console.log("Reindirizzamento a ricerca effettuato con successo");
   }
 
   async ngOnInit() {
 
-    const body = await(await fetch(`${this.url}getAll`)).json();
+    const body = await (await fetch(`${this.url}getAll`)).json();
     const _div: any = document.getElementById('cars');
-    body.forEach((element: any) => {
-      console.log(element.marca + " " + element.modello + " " + element.targa + " " + element.chilometri + " " + element.anno);
-      let cars = document.createElement('div');
-      cars.className = 'wrapperCard';
-      cars.style.margin = '10px';
-      cars.style.width = '18rem';
-      cars.innerHTML = `
+
+    console.log(body);
+    console.log(body.cars);
+
+    body.forEach((user: any) => {
+
+      user.cars.forEach((element: any) => {
+        console.log(element.marca + " " + element.modello + " " + element.targa + " " + element.chilometri + " " + element.anno);
+        let cars = document.createElement('div');
+        cars.className = 'wrapperCard';
+        cars.style.margin = '10px';
+        cars.style.width = '18rem';
+        cars.innerHTML = `
       <div class="card bg-light">
         <div id="carouselExampleIndicators" class="carousel slide">
         <div class="carousel-indicators">
@@ -68,7 +74,9 @@ export class HomeComponent {
         </div>
       </div>
       `;
-      _div.appendChild(cars);
+        _div.appendChild(cars);
+
+      });
     });
   }
 }
